@@ -160,3 +160,40 @@ async def upload_file(
     except Exception as e:
         logger.error(f"Unexpected Error: {str(e)}", exc_info=True)
         raise HTTPException(status_code=500, detail=f"Internal server error: {str(e)}")
+@router.post("/contribute/")
+async def contribute_image(image: UploadFile = File(...), caption: str = Form(...)):
+    """
+    Uploads an image and caption to unverified storage with sequential numbering.
+    """
+    # Define paths for unverified images and captions
+    UNVERIFIED_IMAGES_DIR = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "database", "unverified_images"))
+    UNVERIFIED_CAPTIONS_FILE = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "database", "unverified_captions.txt"))
+
+    # Ensure the directories exist
+    os.makedirs(UNVERIFIED_IMAGES_DIR, exist_ok=True)
+
+    # Validate image type (only JPEG/JPG allowed)
+    if image.content_type not in ["image/jpeg", "image/jpg"]:
+        raise HTTPException(status_code=400, detail="Only JPEG/JPG images are allowed.")
+
+    # Validate caption length (max 77 tokens)
+    if len(caption.split()) > 77:
+        raise HTTPException(status_code=400, detail="Caption exceeds 77 tokens.")
+
+    # Determine next image number
+    existing_files = [f for f in os.listdir(UNVERIFIED_IMAGES_DIR) if f.endswith(".jpg") or f.endswith(".jpeg")]
+    existing_numbers = [int(f.split(".")[0]) for f in existing_files if f.split(".")[0].isdigit()]
+    next_number = max(existing_numbers, default=9999) + 1
+    image_extension = "jpg" if image.content_type == "image/jpeg" else "jpeg"
+    image_filename = f"{next_number}.{image_extension}"
+    image_path = os.path.join(UNVERIFIED_IMAGES_DIR, image_filename)
+
+    # Save image
+    with open(image_path, "wb") as buffer:
+        buffer.write(await image.read())
+
+    # Append caption to the unverified captions file in format: "image_number.jpg, caption"
+    with open(UNVERIFIED_CAPTIONS_FILE, "a") as file:
+        file.write(f"{image_filename}, {caption}\n")
+
+    return {"message": "Contribution uploaded successfully!"}
