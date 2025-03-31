@@ -245,7 +245,7 @@ export default function App() {
             }}
             className="flex items-center gap-2 hover:bg-[var(--muted)] active:scale-95 transition"
           >
-            <RefreshCw className="h-4 w-4 text-gray-400" /> New Chat
+            <RefreshCw className="h-4 w-4 text-gray-400" />
           </Button>
 
           <Button
@@ -258,7 +258,6 @@ export default function App() {
             ) : (
               <Moon className="h-5 w-5" />
             )}
-            <span>{theme === "dark" ? "Light Mode" : "Dark Mode"}</span>
           </Button>
         </div>
       </header>

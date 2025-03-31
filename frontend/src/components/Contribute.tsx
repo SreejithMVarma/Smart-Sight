@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sun, Moon, X } from "lucide-react";
 import axios from "axios";
+import { CONFIG } from "@/config";
 
 const Contribute = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -29,27 +30,26 @@ const Contribute = () => {
       alert("Please upload an image and enter a caption.");
       return;
     }
-  
+
     if (caption.split(" ").length > 77) {
       alert("Caption exceeds 77 tokens.");
       return;
     }
-  
-    // Ensure only JPG/JPEG files are accepted
+
     if (!image.type.match(/^image\/jpeg$/)) {
       alert("Only JPEG/JPG images are allowed.");
       return;
     }
-  
+
     const formData = new FormData();
     formData.append("image", image);
     formData.append("caption", caption);
-  
+
     try {
       const response = await axios.post("http://127.0.0.1:8000/contribute/", formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
-  
+
       alert(response.data.message);
       setImage(null);
       setCaption("");
@@ -58,8 +58,6 @@ const Contribute = () => {
       alert("Failed to upload. Please try again.");
     }
   };
-  
-
 
   return (
     <motion.div
@@ -84,7 +82,7 @@ const Contribute = () => {
           }`}
         >
           <CardContent>
-            <h2 className="text-2xl font-bold text-center mb-4">Contribute to SMARTSIGHT</h2>
+            <h2 className="text-2xl font-bold text-center mb-4">Contribute to {CONFIG.siteTitle}</h2>
 
             {!image ? (
               <motion.label
