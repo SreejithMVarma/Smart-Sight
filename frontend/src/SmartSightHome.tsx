@@ -7,6 +7,7 @@ import sreejithImg from "@/assets/sreejith.jpg";
 import vaishnavImg from "@/assets/vaishnav.jpg";
 import rayhanaImg from "@/assets/rayhana.jpg";
 import { ArrowRight, ChevronDown } from "lucide-react";
+import { CONFIG } from "./config";
 
 interface Star {
   x: number;
@@ -58,8 +59,11 @@ const SmartSightHome = () => {
 
 <header className="sticky top-0 left-0 w-full flex flex-col sm:flex-row items-center px-6 py-4 bg-black bg-opacity-75 z-10">
   {/* Logo Section (1/3 on large screens) */}
-  <a href="/" className="w-full lg:w-2/3 text-2xl sm:text-3xl font-bold text-white hover:text-gray-300 transition text-center sm:text-left">
-    Smart Sight
+  <a href="/" className="w-full lg:w-2/3 text-xl sm:text-2xl font-bold text-white hover:text-gray-300 transition text-center sm:text-left">
+   <div className="flex items-center gap-2">
+            <img src={CONFIG.logoURL} alt="Logo" className="h-8 rounded-lg" />
+            <span>{CONFIG.siteTitle}</span>
+          </div>
   </a>
 
   {/* Navbar Section (2/3 on large screens) */}
@@ -81,8 +85,8 @@ const SmartSightHome = () => {
 
 
 
-      {/* Main Section */}
-      <motion.div
+  {/* Main Section */}
+  <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1 }}
@@ -94,7 +98,7 @@ const SmartSightHome = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 1 }}
         >
-          Smart Sight
+          {CONFIG.siteTitle}
         </motion.h1>
         <p className="mt-4 text-xl font-bold text-gray-300 max-w-2xl">
           Discover, Search, and Navigate
@@ -123,15 +127,15 @@ const SmartSightHome = () => {
         >
           <ChevronDown size={40} className="text-gray-300" />
         </motion.div>
-      </motion.div>
+      </motion.div> 
 
       {/* Features Section */}
       <section
         id="features"
-        className="py-24 flex flex-col items-center text-center w-full"
+        className="py-16 flex flex-col items-center text-center w-full scale-75"
       >
         <motion.h2
-          className="text-7xl font-extrabold mb-10"
+          className="text-5xl font-extrabold mb-8"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -139,7 +143,7 @@ const SmartSightHome = () => {
           Features
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 px-12 w-full max-w-10xl">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 px-8 w-full max-w-9xl">
           {[
             {
               title: "Multimodal Input",
@@ -168,10 +172,10 @@ const SmartSightHome = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.2, duration: 0.5 }}
             >
-              <h3 className="text-2xl lg:text-3xl font-semibold mb-4">
+              <h3 className="text-xl lg:text-2xl font-semibold mb-3">
                 {feature.title}
               </h3>
-              <p className="text-lg lg:text-xl text-gray-300">
+              <p className="text-lg lg:text-2xl text-gray-300">
                 {feature.description}
               </p>
             </motion.div>
@@ -182,12 +186,12 @@ const SmartSightHome = () => {
       {/* About & Video Section */}
       <section
         id="about"
-        className="py-24 bg-gray-900 text-white px-6 flex flex-col lg:flex-row items-center text-center lg:text-left"
+        className="py-20 bg-gray-900 text-white px-4 flex flex-col lg:flex-row items-center text-center lg:text-left"
       >
         {/* Left Side - About Section */}
-        <div className="lg:w-1/2 flex flex-col items-center lg:items-start lg:mx-auto lg:pl-24">
-          <h2 className="text-6xl font-bold mb-6">About</h2>
-          <p className="text-3xl max-w-10xl leading-relaxed">
+        <div className="lg:w-1/2 flex flex-col items-center lg:items-start lg:mx-auto lg:pl-16">
+          <h2 className="text-4xl font-bold mb-4">About</h2>
+          <p className="text-2xl max-w-6xl leading-relaxed">
             Traditional search tools struggle to integrate text and image
             inputs, limiting their functionality. High-cost AI solutions make
             advanced search capabilities inaccessible to small teams.
@@ -198,10 +202,10 @@ const SmartSightHome = () => {
         </div>
 
         {/* Right Side - Video Section */}
-        <div className="lg:w-1/2 flex justify-center mt-10 lg:mt-0">
-          <div className="relative w-full max-w-3xl">
+        <div className="lg:w-1/2 flex justify-center mt-8 lg:mt-0">
+          <div className="relative w-full max-w-2xl">
             <iframe
-              className="w-full h-[450px] lg:h-[550px] rounded-xl"
+              className="w-full h-[340px] lg:h-[400] rounded-xl"
               src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
               title="Smart Sight Introduction"
               allowFullScreen
@@ -212,10 +216,10 @@ const SmartSightHome = () => {
 
       <section
         id="team"
-        className="py-24 flex flex-col items-center text-center"
+        className="py-16 flex flex-col items-center text-center"
       >
-        <h2 className="text-6xl font-bold mb-8">Our Team</h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 px-10">
+        <h2 className="text-4xl font-bold mb-6">Our Team</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 px-6">
           {[
             { name: "Vaisakh V", imageUrl: vaisakhImg },
             { name: "Sreejith M Varma", imageUrl: sreejithImg },
@@ -224,12 +228,12 @@ const SmartSightHome = () => {
           ].map((member, index) => (
             <motion.div
               key={index}
-              className="bg-gray-800 p-6 rounded-xl shadow-lg text-center flex flex-col items-center"
+              className="bg-gray-800 p-4 rounded-xl shadow-lg text-center flex flex-col items-center"
             >
               <img
                 src={member.imageUrl}
                 alt={member.name}
-                className="w-32 h-32 object-cover rounded-full mb-4"
+                className="w-24 h-24 object-cover rounded-full mb-3"
               />
               <h3 className="text-xl font-semibold">{member.name}</h3>
             </motion.div>
