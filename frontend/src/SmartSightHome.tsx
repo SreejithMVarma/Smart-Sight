@@ -73,7 +73,10 @@ const SmartSightHome = () => {
     <a href="#team" className="text-sm sm:text-lg text-white hover:text-gray-300 transition">
       Team
     </a>
-  </nav>
+    <Link to="/contribute" className="text-sm sm:text-lg text-white hover:text-gray-300 transition">
+  Contribute
+</Link>
+ </nav>
 </header>
 
 
