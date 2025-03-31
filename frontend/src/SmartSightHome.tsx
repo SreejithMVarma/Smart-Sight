@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import vaisakhImg from "@/assets/vaisakh.jpg";
 import sreejithImg from "@/assets/sreejith.jpg";
 import vaishnavImg from "@/assets/vaishnav.jpg";
@@ -73,7 +73,10 @@ const SmartSightHome = () => {
     <a href="#team" className="text-sm sm:text-lg text-white hover:text-gray-300 transition">
       Team
     </a>
-  </nav>
+    <Link to="/contribute" className="text-sm sm:text-lg text-white hover:text-gray-300 transition">
+  Contribute
+</Link>
+ </nav>
 </header>
 
 
