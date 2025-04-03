@@ -1,128 +1,212 @@
-# **Smart Sight** <span style="font-size: rem; color: gray;"> — Discover, Search, and Navigate</span>
+<h1>
+  <img src="logo.png" alt="Logo" width="50" style="vertical-align: middle;">
+  <b>Smart Sight</b> <span style="font-size: 2rem; color: grey;">— Discover, Search, and Navigate</span>
+</h1>
+
+## 📌 Overview
+SmartSight is a **state-of-the-art multi-modal query system** that integrates **computer vision, natural language processing, and similarity search** to retrieve visually and semantically similar images from a database.
+
+### ✨ Key Features
+✔️ **Multi-modal Search**: Query using images, text, or both.  
+✔️ **Efficient Similarity Search**: Uses **FAISS** for fast retrieval over large datasets.  
+✔️ **CLIP-based Embeddings**: Ensures accurate **semantic matching**.  
+✔️ **Google Gemini AI Integration**: Provides **context-aware responses**.  
+✔️ **User Contribution System**: Users can **add images and captions** for future indexing. 
 
 
-Welcome to the **Multimodal Search Chatbot** project! This is an advanced chatbot capable of processing **image**, **text**, and **multimodal (image + text)** inputs to provide intelligent and context-aware responses. Powered by **OpenAI's CLIP model**, **FAISS vector database**, and **LLM-based refinement**, this chatbot delivers a seamless and interactive user experience.
 
----
+## 🧱 System Architecture
 
-## 🎯 Features
+<img src="HLD.jpg" alt="Logo" width="350"  style="vertical-align: middle; margin-left: 250px" >
 
-- **Multimodal Input Support**: Accepts **image**, **text**, or **image + text** inputs.
-- **CLIP Model Integration**: Leverages OpenAI's CLIP for generating embeddings.
-- **FAISS Vector Database**: Efficiently stores and retrieves embeddings for fast search.
-- **Web Scraping**: Performs Google searches to enhance response quality.
-- **LLM-Powered Refinement**: Uses a Large Language Model to parse and refine results.
-- **Dynamic Response Generation**: Returns **text**, **images**, or **both** based on user queries.
 
----
 
-## 📊 Diagrams
-### High-Level System Design  
-![High-Level System Design](./High_Level_System_Design.png)
 
----
+## **🔧 Technology Stack**
+
+
+| Component      | Technologies |
+|---------------|-------------|
+| **Frontend**  | ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black) ![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white) ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white) ![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white) ![Framer Motion](https://img.shields.io/badge/Framer_Motion-0055FF?style=for-the-badge&logo=framer&logoColor=white) ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge) ![Lucide React](https://img.shields.io/badge/Lucide_React-000000?style=for-the-badge) ![Next Themes](https://img.shields.io/badge/NextThemes-000000?style=for-the-badge) |
+| **Backend**   | ![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white) ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white) |
+| **Database**  | ![FAISS](https://img.shields.io/badge/FAISS-005571?style=for-the-badge) |
+| **AI Models** | ![CLIP](https://img.shields.io/badge/CLIP-FF6F00?style=for-the-badge) ![Gemini](https://img.shields.io/badge/Google%20Gemini-4285F4?style=for-the-badge) |
+
+
 ## 🚀 Getting Started
 
 ### Prerequisites
-- Python 3.8+
-- OpenAI CLIP model
-- FAISS library
-- Google Search API (for web scraping)
-- LLM (e.g., Gemini)
+- **Python 3.8+**
+- **Node.js 16+**
+- **pip** (for Python package management)
+- **Git** for version control
 
-### Installation
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/multimodal-search-chatbot.git
-   cd multimodal-search-chatbot
-   ```
+## 📸 Interface Overview
 
-2. Install dependencies:
-   ```bash
-   pip install -r requirements.txt
-   ```
+###  Home Page
+![Home Page](./HomePage.png)
 
-3. Set up environment variables:
-   ```bash
-   export OPENAI_API_KEY="your_openai_api_key"
-   export GOOGLE_SEARCH_API_KEY="your_google_search_api_key"
-   ```
+### Search Page
+![Search Page](./SearchPage.png)
 
-4. Run the chatbot:
-   ```bash
-   python main.py
-   ```
+### Contribute Page
+![Contribute Page](./ContributePage.png)
+   > The **Contribute page** allows users to add new images and captions, which are later verified and 
+   appended to the dataset.
 
----
+## ⚙️ Installation & Setup
+
+### 🔹 1. Clone the Repository
+
+```sh
+git clone https://github.com/your-username/SmartSight.git
+cd SmartSight
+```
+
+### 🔹 2. Run the Project
+
+Simply run the following command, which will **install dependencies** and start both the backend and frontend:
+
+```sh
+python run_project.py
+```
+
+This will:
+
+- Install all required dependencies.
+- Start **two terminals**: one for the **FastAPI backend** and one for the **React frontend**.
+
+## 🔄 How It Works
+
+1️⃣ **Database Preparation**  
+   - Processes images and captions to create a **FAISS index**.  
+   - Stores embeddings using the **CLIP model**.  
+
+2️⃣ **Query Processing**  
+   - Users submit **image/text queries**.  
+   - The backend retrieves **similar images** using FAISS.  
+   - Google Gemini AI provides additional insights.  
+
+3️⃣ **Results Display**  
+   - The frontend presents retrieved **images, captions, and AI-generated insights**.  
 
 ## 📂 Project Structure
 
 ```
-multimodal-search-chatbot/
-├── main.py                # Entry point for the chatbot
-├── requirements.txt       # List of dependencies
-├── README.md              # Project documentation
-├── diagrams/              # Diagrams (system design, data flow, etc.)
-├── modules/               # Core modules
-│   ├── input_parsers.py   # Handles image, text, and multimodal inputs
-│   ├── clip_model.py      # Generates embeddings using CLIP
-│   ├── faiss_db.py        # Manages FAISS vector database
-│   ├── web_scraper.py     # Performs Google searches
-│   ├── llm.py             # Parses and refines results using LLM
-│   └── response_gen.py    # Generates final responses
-└── tests/                 # Unit and integration tests
+Smart-Sight/
+├── backend/
+│   ├── database/
+│   │   ├── images/
+│   │   ├── captions.txt
+│   │   ├── flickr8k_faiss_index.faiss
+│   │   └── flickr8k_faiss_index.paths
+│   ├── database generator/
+│   │   ├── src/
+│   │   │   ├── captions_loader.py
+│   │   │   ├── embeddings.py
+│   │   │   ├── faiss_index.py
+│   │   │   ├── model_loader.py
+│   │   │   └── preprocess.py
+│   │   ├── config.py
+│   │   └── main.py
+│   ├── server/
+│   │   ├── app/
+│   │   │   ├── main.py
+│   │   │   ├── memory.py
+│   │   │   ├── models.py
+│   │   │   ├── routes.py
+│   │   │   ├── settings.py
+│   │   │   └── utils.py
+│   │   └── static/
+│   └── .env
+├── frontend/
+│   ├── src/
+│   │   ├── assets/
+│   │   ├── components/
+│   │   │   └── ui/
+│   │   │       ├── button.tsx
+│   │   │       └── input.tsx
+│   │   ├── Contribute.tsx
+│   │   ├── lib/
+│   │   ├── App.css
+│   │   ├── App.tsx
+│   │   ├── config.ts
+│   │   ├── index.css
+│   │   └── main.tsx
+│   │   ├── SmartSightHome.tsx
+│   ├── package.json
+│   ├── tailwind.config.js
+│   ├── tsconfig.json
+│   └── vite.config.ts
+├── .gitignore
+├── High_Level_System_Design.png
+├── README.md
+└── run_project.py
 ```
+## 👥 Meet Our Team  
 
----
+<p align="center">
+    <a href="https://github.com/Rayhana27">
+        <img src="https://github.com/Rayhana27.png" width="120px" style="border-radius: 50%;" alt="Rayhana S"/>
+    </a>
+</p>
+<p align="center">
+    <a href="https://github.com/Rayhana27"><strong> Rayhana S</strong></a>
+</p>
 
 
-## 🧩 Modules
 
-### 1. Input Parsers
-- **Image Parser**: Processes image inputs.
-- **Text Parser**: Processes text inputs.
-- **Multimodal Parser**: Handles combined image + text inputs.
+<p align="center">
+    <a href="https://github.com/SreejithMVarma">
+        <img src="https://github.com/SreejithMVarma.png" width="120px" style="border-radius: 50%;" alt="SreejithMVarma"/>
+    </a>
+</p>
+<p align="center">
+    <a href="https://github.com/SreejithMVarma"><strong>Sreejith M Varma</strong></a>
+</p>
 
-### 2. CLIP Model
-- Generates embeddings for images, text, and multimodal inputs.
 
-### 3. FAISS Vector Database
-- Stores and retrieves embeddings for efficient search.
 
-### 4. Web Scraper
-- Performs Google searches based on retrieved results.
+<p align="center">
+    <a href="https://github.com/iamvaisakh">
+        <img src="https://github.com/iamvaisakh.png" width="120px" style="border-radius: 50%;" alt="iamvaisakh"/>
+    </a>
+</p>
+<p align="center">
+    <a href="https://github.com/iamvaisakh"><strong> Vaisakh V</strong></a>
+</p>
 
-### 5. LLM
-- Parses and refines scraped results to generate meaningful responses.
 
-### 6. Response Generator
-- Formats the final output (text, images, or both).
 
----
+<p align="center">
+    <a href="https://github.com/Vaishnavgopal36">
+        <img src="https://github.com/Vaishnavgopal36.png" width="120px" style="border-radius: 50%;" alt="Vaishnavgopal36"/>
+    </a>
+</p>
 
-## 🤝 Contributing
+<p align="center">
+    <a href="https://github.com/Vaishnavgopal36"><strong> Vaishnav Gopal</strong></a>
+</p>
 
-Contributions are welcome! Please follow these steps:
-1. Fork the repository.
-2. Create a new branch (`git checkout -b feature/YourFeatureName`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature/YourFeatureName`).
-5. Open a pull request.
+## 🤝 Contribute
+We welcome contributions to **SmartSight**! 
+#### To contribute:
+1. **Fork** the repository.
+2. **Create a new branch** (`feature-branch-name`).
+3. **Commit changes** and push to GitHub.
+4. **Open a pull request**.
 
----
+💡 **For dataset contributions**, use the **Contribute Page**! Submissions will be **reviewed before indexing**.
 
-## 📄 License
+
+## 📝 License
 
 This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
----
+## 🙌 Acknowledgments
+Special thanks to **all contributors, open-source libraries, and research efforts** that made this project possible! 🎉
 
-## 🙏 Acknowledgments
-
-- OpenAI for the CLIP model.
-- Facebook AI Research (FAIR) for FAISS.
-- Google for the Search API.
 
 ---
-
 Made with ❤️ by Smart Sight
+
