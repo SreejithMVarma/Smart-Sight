@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Sun, Moon, X } from "lucide-react";
 import axios from "axios";
+import { API_BASE_URL } from "@/config";
 
 const Contribute = () => {
   const [image, setImage] = useState<File | null>(null);
@@ -46,7 +47,7 @@ const Contribute = () => {
     formData.append("caption", caption);
   
     try {
-      const response = await axios.post("http://127.0.0.1:8000/contribute/", formData, {
+      const response = await axios.post(`${API_BASE_URL}/contribute/`, formData, {
         headers: { "Content-Type": "multipart/form-data" },
       });
   
