@@ -87,7 +87,7 @@ This will:
 
 2️⃣ **Query Processing**  
    - Users submit **image/text queries**.  
-   - The backend retrieves **similar images** using FAISS.  
+   - The backend retrieves **similar images** using CLIP and FAISS.  
    - Google Gemini AI provides additional insights.  
 
 3️⃣ **Results Display**  
@@ -204,7 +204,7 @@ We welcome contributions to **SmartSight**!
 
 ## 📝 License
 
-This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**.
 
 ## 🙌 Acknowledgments
 Special thanks to **all contributors, open-source libraries, and research efforts** that made this project possible! 🎉
