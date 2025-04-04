@@ -1,7 +1,10 @@
-<h1>
-  <img src="logo.png" alt="Logo" width="50" style="vertical-align: middle;">
-  <b>Smart Sight</b> <span style="font-size: 2rem; color: grey;">— Discover, Search, and Navigate</span>
-</h1>
+<table>
+  <tr>
+    <td><img src="logo.png" width="50"></td>
+    <td><h1>Smart Sight <span style="font-size: 1.5rem; color: grey;">— Discover, Search, and Navigate</span></h1></td>
+  </tr>
+</table>
+
 
 ## 📌 Overview
 SmartSight is a **state-of-the-art multi-modal query system** that integrates **computer vision, natural language processing, and similarity search** to retrieve visually and semantically similar images from a database.
